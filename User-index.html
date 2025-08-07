@@ -164,7 +164,7 @@
             apiKey: "AIzaSyDzaSJuMumdlp_ZzjKvatvGm_7XLxq3jFM",
             authDomain: "link-click-work.firebaseapp.com",
             projectId: "link-click-work",
-            databaseURL: "https://link-click-work-default-rtdb.asia-southeast1.firebasedatabase.app/", // এখানে আপনার Realtime Database URL থাকবে
+            databaseURL: "https://link-click-work-default-rtdb.asia-southeast1.firebasedatabase.app/",
             storageBucket: "link-click-work.firebasestorage.app",
             messagingSenderId: "1098565051426",
             appId: "1:1098565051426:web:a99ee9186b0f481954167b",
@@ -173,12 +173,12 @@
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-        // Firebase-এর জন্য গ্লোবাল ভ্যারিয়েবল
         window.database = database;
         window.ref = ref;
         window.onValue = onValue;
         window.set = set;
         window.push = push;
+        window.remove = remove;
     </script>
 
     <div class="container">
@@ -256,7 +256,6 @@
             updateDateTime();
             setInterval(updateDateTime, 1000);
 
-            // Firebase থেকে ডেটা লোড করার জন্য onValue লিসেনার
             const userRef = ref(database, 'users');
             onValue(userRef, (snapshot) => {
                 const usersData = [];
